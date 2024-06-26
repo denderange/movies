@@ -1,0 +1,29 @@
+.container {
+	background-color: #fca13a;
+	min-width: 280px;
+	padding: 24px;
+	min-height: 100vh;
+}
+
+.linksContainer {
+	margin-top: 80px;
+}
+
+.link {
+	width: 100%;
+	padding: 10px;
+	display: block;
+	text-transform: capitalize;
+	font-weight: 400;
+
+	&:not(:last-child) {
+		margin-bottom: 8px;
+	}
+}
+
+.linkActive {
+	font-weight: 600;
+	color: #fc3ac2;
+	background-color: #3a9efc;
+	border-radius: 8px;
+}

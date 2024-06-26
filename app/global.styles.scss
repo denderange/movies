@@ -1,0 +1,21 @@
+body {
+	font-weight: 200;
+	background-color: aquamarine;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.pageWrapper {
+	gap: 0;
+	max-width: 1440px;
+	overflow-x: hidden;
+	margin: auto;
+}
+
+.pageContainer {
+	background-color: #d7d69f;
+	display: flex;
+}
