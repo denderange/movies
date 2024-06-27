@@ -22,8 +22,8 @@ const AsideMenu = () => {
 					<Link
 						href={item.href}
 						key={item.name}
-						className={`${
-							pathName === item.href ? styles.linkActive : styles.link
+						className={`${pathName === item.href ? styles.linkActive : ""} ${
+							styles.link
 						}`}>
 						{item.name}
 					</Link>

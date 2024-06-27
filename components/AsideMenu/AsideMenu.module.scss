@@ -1,5 +1,10 @@
 .container {
-	background-color: #fca13a;
+	background: var(--mantine-color-orange-4);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 135, 0, 1) 0%,
+		rgba(255, 179, 0, 1) 100%
+	);
 	min-width: 280px;
 	padding: 24px;
 	min-height: 100vh;
@@ -15,15 +20,29 @@
 	display: block;
 	text-transform: capitalize;
 	font-weight: 400;
+	color: var(--mantine-color-red-9);
+	background-color: #ffab51;
+	border-radius: 8px;
+	transition: all ease-in-out 0.3s;
+	border: 1px solid #ffab51;
 
 	&:not(:last-child) {
-		margin-bottom: 8px;
+		margin-bottom: 16px;
+	}
+
+	&:hover {
+		border-color: var(--mantine-color-yellow-2);
 	}
 }
 
 .linkActive {
 	font-weight: 600;
-	color: #fc3ac2;
-	background-color: #3a9efc;
-	border-radius: 8px;
+	color: var(--mantine-color-yellow-4);
+	background-color: var(--mantine-color-brown-5);
+	border: 1px solid var(--mantine-color-brown-5);
+
+	&:hover {
+		border-color: var(--mantine-color-brown-5);
+		cursor: default;
+	}
 }

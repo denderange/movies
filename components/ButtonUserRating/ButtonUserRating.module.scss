@@ -1,0 +1,36 @@
+.ratingModalContent {
+	padding-top: 18px;
+}
+
+.titleMovie {
+	color: var(--mantine-color-brown-5);
+	font-size: 18px;
+}
+
+.ratingStars {
+	width: 100%;
+	justify-content: space-between;
+}
+
+.buttonStarRate {
+	position: absolute;
+	right: 24px;
+	top: 20px;
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+
+	svg {
+		transition: fill 0.3s ease-in-out;
+	}
+
+	&:hover {
+		svg {
+			fill: #d7d69f;
+			scale: 1.1;
+		}
+	}
+}

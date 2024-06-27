@@ -1,0 +1,51 @@
+.card {
+	height: 218px;
+	border-radius: 12px;
+	background-color: #ffffff;
+	padding: 24px;
+	position: relative;
+	transition: box-shadow 0.3s ease-in-out;
+
+	span {
+		color: #8d8b2d;
+		padding-right: 10px;
+		font-weight: normal;
+	}
+
+	&:hover {
+		-webkit-box-shadow: 0px 0px 12px 0px #fdb76650;
+		-moz-box-shadow: 0px 0px 12px 0px #fdb76650;
+		box-shadow: 0px 0px 12px 0px #fdb76650;
+	}
+}
+
+.info {
+	width: 263px;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.title {
+	color: var(--mantine-color-orange-9);
+	font-size: 20px;
+	font-weight: 700;
+
+	/* Обрезка текста */
+	line-height: 1.3rem;
+	max-height: 2.6rem;
+	-webkit-box-orient: vertical;
+	display: block;
+	display: -webkit-box;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 4;
+}
+
+.linkToMovie {
+	transition: color 0.3s ease-in-out;
+
+	&:hover {
+		color: var(--mantine-color-orange-7);
+	}
+}
+

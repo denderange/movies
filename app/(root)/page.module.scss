@@ -1,5 +1,16 @@
-.main {
-	background-color: aqua;
-	min-height: 100vh;
-	width: 100%;
+.mainContainer {
+	width: 980px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+.pageContent {
+	justify-content: space-between;
+}
+
+.pageTitle {
+	font-size: 32px;
+	line-height: 1.4;
+	font-weight: 700;
+	padding: 16px 0;
 }
