@@ -8,14 +8,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<main className={styles.mainContainer}>
-			<Title
-				order={1}
-				className={styles.pageTitle}>
-				Movies
-			</Title>
-			<Filters />
-			{children}
+		<main className={styles.wrapper}>
+			<div className={styles.container}>
+				<Title
+					order={1}
+					className={styles.pageTitle}>
+					Movies
+				</Title>
+				<Filters />
+				{children}
+			</div>
 		</main>
 	);
 }

@@ -45,12 +45,16 @@ const ButtonUserRating = () => {
 					<Box>
 						<Button
 							color='orange'
-							mr={20}>
+							mr={20}
+							radius={"md"}
+							style={{ transition: "all 0.3s ease" }}>
 							Save
 						</Button>
 						<Button
 							variant='subtle'
-							color='orange'>
+							color='orange'
+							radius={"md"}
+							style={{ transition: "all 0.3s ease" }}>
 							Remove rating
 						</Button>
 					</Box>

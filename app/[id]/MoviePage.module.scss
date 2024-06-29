@@ -1,0 +1,96 @@
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 40px 16px 0px 16px;
+}
+
+.container {
+	max-width: 980px;
+	margin: 0 auto;
+}
+
+// Card section
+.card {
+	display: flex;
+	gap: 14px;
+	border-radius: 12px;
+	background-color: #ffffff;
+	padding: 24px;
+	position: relative;
+
+	span {
+		color: var(--mantine-color-yellow-7);
+		padding-right: 10px;
+		font-weight: normal;
+	}
+}
+
+.info {
+	min-height: 100%;
+	margin-right: 50px;
+	justify-content: space-between;
+}
+
+.title {
+	color: var(--mantine-color-orange-9);
+	font-size: 20px;
+	font-weight: 700;
+
+	/* Обрезка текста */
+	line-height: 1.3rem;
+	max-height: 2.6rem;
+	-webkit-box-orient: vertical;
+	display: block;
+	display: -webkit-box;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 4;
+}
+
+.movieDetails {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: 5px 20px;
+
+	span {
+		color: var(--mantine-color-yellow-8);
+		font-weight: normal;
+	}
+
+	div {
+		font-weight: 500;
+	}
+}
+
+// Trailer section
+.trailer {
+	border-radius: 12px;
+	background-color: #ffffff;
+	padding: 24px;
+
+	h6 {
+		font-size: 20px;
+		padding: 20px 0px;
+		margin: 0px;
+	}
+}
+
+.video {
+	border-bottom: 1px solid var(--mantine-color-brown-0);
+	padding-bottom: 16px;
+}
+
+.description {
+	border-bottom: 1px solid var(--mantine-color-brown-0);
+	padding-bottom: 16px;
+}
+
+.productionDetails {
+	display: grid;
+	grid-template-columns: max-content auto;
+	gap: 0px 20px;
+	align-items: center;
+	font-weight: 500;
+	color: var(--mantine-color-brown-9);
+}

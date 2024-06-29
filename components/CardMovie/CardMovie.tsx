@@ -13,7 +13,12 @@ const CardMovie = () => {
 	return (
 		<Group className={styles.card}>
 			<Box>
-				<PopoverImage />
+				<PopoverImage
+					imgWidth={119}
+					imgHeigth={170}
+					imgSrc={""}
+					showPopower={true}
+				/>
 			</Box>
 			<Stack className={styles.info}>
 				<Box>

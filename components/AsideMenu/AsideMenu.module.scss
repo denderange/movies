@@ -21,7 +21,6 @@
 	text-transform: capitalize;
 	font-weight: 400;
 	color: var(--mantine-color-red-9);
-	background-color: #ffab51;
 	border-radius: 8px;
 	transition: all ease-in-out 0.3s;
 	border: 1px solid #ffab51;
@@ -32,6 +31,7 @@
 
 	&:hover {
 		border-color: var(--mantine-color-yellow-2);
+		background-color: #ffab51;
 	}
 }
 
@@ -43,6 +43,7 @@
 
 	&:hover {
 		border-color: var(--mantine-color-brown-5);
+		background-color: var(--mantine-color-brown-5);
 		cursor: default;
 	}
 }

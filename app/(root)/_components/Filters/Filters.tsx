@@ -26,7 +26,8 @@ const ratingNumbers = [...Array(11)].map((_, i) => i.toString()).slice(1, 11);
 const ratingNumbersDesc = [...Array(11)]
 	.reverse()
 	.map((_, i) => i.toString())
-	.slice(1, 11);
+	.slice(1, 11)
+	.reverse();
 const sortByOptions = ["Most popular", "Rating", "Genre", "Year"];
 
 const Filters = () => {
@@ -39,7 +40,7 @@ const Filters = () => {
 				style={{ justifyContent: "space-between" }}
 				mt={"lg"}
 				mb={"xl"}>
-				<Box>
+				<Box style={{ alignSelf: "flex-start" }}>
 					<Text
 						mb={"sm"}
 						c={"red.7"}>
@@ -60,7 +61,7 @@ const Filters = () => {
 					/>
 				</Box>
 
-				<Box>
+				<Box style={{ alignSelf: "flex-start" }}>
 					<Text
 						mb={"sm"}
 						c={"red.7"}>
@@ -82,7 +83,7 @@ const Filters = () => {
 					/>
 				</Box>
 
-				<Box>
+				<Box style={{ alignSelf: "flex-start" }}>
 					<Text
 						mb={"sm"}
 						c={"red.7"}>
@@ -121,12 +122,19 @@ const Filters = () => {
 					</Group>
 				</Box>
 
-				<Button
-					variant='subtle'
-					color='orange'
-					style={{ alignSelf: "flex-end" }}>
-					Reset filters
-				</Button>
+				<Box
+					style={{
+						display: "flex",
+						flexDirection: "column",
+						alignSelf: "center",
+					}}>
+					<Button
+						variant='subtle'
+						color='orange'
+						className={styles.btnResetFilters}>
+						Reset filters
+					</Button>
+				</Box>
 
 				<Box
 					style={{

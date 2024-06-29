@@ -1,6 +1,6 @@
 import { SimpleGrid, Stack } from "@mantine/core";
 import styles from "./page.module.scss";
-import CardMovie from "./_components/CardMovie/CardMovie";
+import CardMovie from "../../components/CardMovie/CardMovie";
 import PaginationMovies from "@/components/PaginationMovies/PaginationMovies";
 
 export default function Home() {
