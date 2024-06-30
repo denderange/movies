@@ -1,4 +1,14 @@
+.filtersForm {
+	input {
+		&:focus {
+			border-color: var(--mantine-color-orange-8);
+		}
+	}
+	div[data-expanded="true"] {
+		border-color: var(--mantine-color-orange-8);
+	}
+}
+
 .btnResetFilters {
-	// align-self: center;
 	transition: all 0.3s ease-in-out;
 }

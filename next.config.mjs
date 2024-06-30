@@ -6,6 +6,18 @@ const nextConfig = {
 	experimental: {
 		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
 	},
+	images: {
+		domains: ["image.tmdb.org"],
+	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "image.tmdb.org",
+				port: "",
+			},
+		],
+	},
 };
 
 export default nextConfig;

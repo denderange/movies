@@ -1,41 +1,61 @@
 "use client";
 
-import {
-	Box,
-	Button,
-	Combobox,
-	Fieldset,
-	Group,
-	Input,
-	MultiSelect,
-	Pill,
-	PillsInput,
-	Select,
-	Text,
-	TextInput,
-	useCombobox,
-} from "@mantine/core";
+import { Box, Button, Group, MultiSelect, Select, Text } from "@mantine/core";
 import styles from "./Filters.module.scss";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { BiExpandVertical } from "react-icons/bi";
 import { createReleaseYears } from "@/utils/createReleaseYears";
+import type { GenresT } from "@/types/genres";
 
-const genres = ["Apples", "Bananas", "Broccoli", "Carrots", "Chocolate"];
-const ratingNumbers = [...Array(11)].map((_, i) => i.toString()).slice(1, 11);
-const ratingNumbersDesc = [...Array(11)]
-	.reverse()
-	.map((_, i) => i.toString())
-	.slice(1, 11)
-	.reverse();
-const sortByOptions = ["Most popular", "Rating", "Genre", "Year"];
+// const genresSSS = ["Apples", "Bananas", "Broccoli", "Carrots", "Chocolate"];
+// const ratingNumbers = [...Array(11)].map((_, i) => i.toString()).slice(1, 11);
 
-const Filters = () => {
+const sortByOptions = [
+	"Popularity",
+	"Title",
+	"Release date",
+	"Revenue",
+	"Vote",
+];
+
+type FiltersProps = {
+	genres: GenresT[];
+};
+
+type SelectedRatingT = {
+	from: string;
+	to: string;
+};
+
+const Filters = ({ genres }: FiltersProps) => {
+	const [chosenGenres, setChosenGenres] = useState<string[]>();
+	const [chosenRating, setChosenRating] = useState<SelectedRatingT>();
 	const [year, setYear] = useState<string | null>("");
-	const [sortBy, setSortBy] = useState<string | null>("Most popular");
+	const [sortBy, setSortBy] = useState<string | null>("Popularity");
+
+	const genresNames = genres.reduce(
+		(acc: string[], item) => [...acc, item.name],
+		[]
+	);
+
+	// reverse() не срабатывает при вызове в компонентe Select :(
+	const ratingValuesFrom = Array(10)
+		.fill(0)
+		.map((item, index) => (index + 1).toString());
+
+	const ratingValuesTo = Array(10)
+		.fill(0)
+		.map((item, index) => (index + 1).toString())
+		.reverse();
+
+	const handleResetFilters = () => {
+		setChosenGenres(() => []);
+	};
 
 	return (
-		<form>
+		<form className={styles.filtersForm}>
+			<p>chosen genres: {chosenGenres}</p>
 			<Group
 				style={{ justifyContent: "space-between" }}
 				mt={"lg"}
@@ -48,14 +68,17 @@ const Filters = () => {
 					</Text>
 					<MultiSelect
 						placeholder='Select genre'
-						data={genres}
+						data={genresNames}
+						onChange={(value: string[]) => setChosenGenres(value)}
+						maxDropdownHeight={"max-content"}
 						w={280}
+						size='md'
 						rightSectionPointerEvents='none'
 						rightSection={<IoIosArrowDown />}
 						hidePickedOptions
 						comboboxProps={{
 							transitionProps: { transition: "pop", duration: 200 },
-							dropdownPadding: 0,
+							dropdownPadding: 10,
 							shadow: "md",
 						}}
 					/>
@@ -71,13 +94,14 @@ const Filters = () => {
 						data={createReleaseYears()}
 						value={year}
 						onChange={setYear}
+						size='md'
 						w={200}
 						placeholder='Select release year'
 						rightSectionPointerEvents='none'
 						rightSection={<IoIosArrowDown />}
 						comboboxProps={{
 							transitionProps: { transition: "pop", duration: 200 },
-							dropdownPadding: 0,
+							dropdownPadding: 10,
 							shadow: "md",
 						}}
 					/>
@@ -91,31 +115,37 @@ const Filters = () => {
 					</Text>
 					<Group>
 						<Select
-							data={ratingNumbers}
-							value={year}
+							data={ratingValuesFrom}
+							value={chosenRating?.from}
 							onChange={setYear}
+							maxDropdownHeight={"max-content"}
+							withCheckIcon={false}
 							w={130}
+							size='md'
 							placeholder='From'
 							rightSectionPointerEvents='none'
 							rightSection={<BiExpandVertical />}
 							comboboxProps={{
 								transitionProps: { transition: "pop", duration: 200 },
-								dropdownPadding: 0,
+								dropdownPadding: 10,
 								shadow: "md",
 							}}
 						/>
 
 						<Select
-							data={ratingNumbersDesc}
-							value={year}
+							data={ratingValuesTo}
+							value={chosenRating?.to}
 							onChange={setYear}
+							maxDropdownHeight={"max-content"}
+							withCheckIcon={false}
 							w={130}
+							size='md'
 							placeholder='To'
 							rightSectionPointerEvents='none'
 							rightSection={<BiExpandVertical />}
 							comboboxProps={{
 								transitionProps: { transition: "pop", duration: 200 },
-								dropdownPadding: 0,
+								dropdownPadding: 10,
 								shadow: "md",
 							}}
 						/>
@@ -131,6 +161,7 @@ const Filters = () => {
 					<Button
 						variant='subtle'
 						color='orange'
+						onClick={handleResetFilters}
 						className={styles.btnResetFilters}>
 						Reset filters
 					</Button>
@@ -148,14 +179,15 @@ const Filters = () => {
 					<Select
 						data={sortByOptions}
 						value={sortBy}
+						defaultValue={sortBy}
 						onChange={setSortBy}
 						w={200}
-						defaultValue={sortBy}
+						size='md'
 						rightSectionPointerEvents='none'
 						rightSection={<IoIosArrowDown />}
 						comboboxProps={{
 							transitionProps: { transition: "pop", duration: 200 },
-							dropdownPadding: 0,
+							dropdownPadding: 10,
 							shadow: "md",
 						}}
 					/>
