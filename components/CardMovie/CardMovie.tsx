@@ -5,10 +5,11 @@ import { sliceText } from "@/utils/sliceText";
 import Link from "next/link";
 import PopoverImage from "./PopoverImage";
 import ButtonUserRating from "@/components/ButtonUserRating/ButtonUserRating";
+import type { MovieT } from "@/types/movie";
+import { handleGenresData } from "@/utils/handleGenresData";
 
-const CardMovie = () => {
-	const exampleTitle =
-		"Movie Title Movie Titlewewe Moview2525235235rwrwr ryrryTitleMrtyrytovie Tiryrytrtyrtytle Movie Title Movie Title";
+const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
+	const genresNames = handleGenresData(genres, movie.genre_ids);
 
 	return (
 		<Group className={styles.card}>
@@ -16,25 +17,25 @@ const CardMovie = () => {
 				<PopoverImage
 					imgWidth={119}
 					imgHeigth={170}
-					imgSrc={""}
+					textTooltip={movie.overview}
+					imgSrc={`${process.env.TMDB_POSTER_URL}/w185/${movie.poster_path}`}
 					showPopower={true}
 				/>
 			</Box>
 			<Stack className={styles.info}>
 				<Box>
-					{/* текст обрезается функцией sliceText и стилями .title в module.scss */}
 					<Title
 						order={5}
 						mb={8}
 						className={styles.title}>
 						<Link
-							href={"#"}
+							href={`/${movie.id}`}
 							className={styles.linkToMovie}>
-							{sliceText(exampleTitle)}
+							{sliceText(movie.title, 38)}
 						</Link>
 					</Title>
 					<Text mb={8}>
-						<span>year</span>
+						<span>{movie.release_date}</span>
 					</Text>
 					<Group
 						mb={8}
@@ -44,12 +45,12 @@ const CardMovie = () => {
 							size={28}
 							color='#fca13a'
 						/>{" "}
-						9.3 <span>(2.9M)</span>
+						{movie.vote_average} <span>({movie.vote_count})</span>
 					</Group>
 				</Box>
 				<Text truncate='end'>
-					<span>Genres:</span>genre, genre, genre, genre, genre, genre, genre,
-					genre, genre, genre,
+					<span>Genres:</span>
+					{genresNames.join(", ")}
 				</Text>
 			</Stack>
 

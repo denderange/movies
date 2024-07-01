@@ -2,12 +2,12 @@ import { Title } from "@mantine/core";
 import Filters from "./_components/Filters/Filters";
 import styles from "./page.module.scss";
 import { getGenres } from "../../utils/fetchData";
-import { GenresT } from "@/types/genres";
+import { GenreT } from "@/types/genre";
+import Home from "./page";
 
-export default async function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
+export default async function RootLayout({}: // children,
+{
+	// children: React.ReactNode;
 }) {
 	const { genres } = await getGenres("en-Us");
 
@@ -20,7 +20,8 @@ export default async function RootLayout({
 					Movies
 				</Title>
 				<Filters genres={genres} />
-				{children}
+				{/* {children} */}
+				<Home genres={genres} />
 			</div>
 		</main>
 	);

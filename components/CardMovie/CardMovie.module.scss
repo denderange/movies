@@ -29,16 +29,6 @@
 	color: var(--mantine-color-orange-9);
 	font-size: 20px;
 	font-weight: 700;
-
-	/* Обрезка текста */
-	line-height: 1.3rem;
-	max-height: 2.6rem;
-	-webkit-box-orient: vertical;
-	display: block;
-	display: -webkit-box;
-	overflow: hidden !important;
-	text-overflow: ellipsis;
-	-webkit-line-clamp: 4;
 }
 
 .linkToMovie {
@@ -48,4 +38,3 @@
 		color: var(--mantine-color-orange-7);
 	}
 }
-

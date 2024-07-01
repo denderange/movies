@@ -1,15 +1,18 @@
-type GenreT = {
-	id: string;
-	name: string;
-};
+import { GenreT } from "@/types/genre";
 
-export const handleGenresData = (genres: GenreT[], movieIds: number[]) => {
-	// const genreNames = [];
-	// for (const movieId of movieIds) {
-	//   const genre = genres.find(genre => genre.id === movieId);
-	//   if (genre) {
-	//     genreNames.push(genre.name);
-	//   }
-	// }
-	// return genreNames.join(', ');
+export const handleGenresData = (
+	allGenres: GenreT[],
+	movieGenres: number[]
+) => {
+	const genresNames = [];
+
+	for (let i of movieGenres) {
+		const genre = allGenres.find((genre) => genre.id === i);
+
+		if (genre) {
+			genresNames.push(genre.name);
+		}
+	}
+
+	return genresNames;
 };

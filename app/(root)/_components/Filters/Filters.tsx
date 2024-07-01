@@ -6,7 +6,7 @@ import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { BiExpandVertical } from "react-icons/bi";
 import { createReleaseYears } from "@/utils/createReleaseYears";
-import type { GenresT } from "@/types/genres";
+import type { GenresT } from "@/types/genre";
 
 // const genresSSS = ["Apples", "Bananas", "Broccoli", "Carrots", "Chocolate"];
 // const ratingNumbers = [...Array(11)].map((_, i) => i.toString()).slice(1, 11);
@@ -32,7 +32,7 @@ const Filters = ({ genres }: FiltersProps) => {
 	const [chosenGenres, setChosenGenres] = useState<string[]>();
 	const [chosenRating, setChosenRating] = useState<SelectedRatingT>();
 	const [year, setYear] = useState<string | null>("");
-	const [sortBy, setSortBy] = useState<string | null>("Popularity");
+	const [sortBy, setSortBy] = useState<string | null>("Release date");
 
 	const genresNames = genres.reduce(
 		(acc: string[], item) => [...acc, item.name],

@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
 import "@mantine/core/styles.css";
-import {
-	Box,
-	ColorSchemeScript,
-	Group,
-	MantineProvider,
-	Stack,
-} from "@mantine/core";
+import { Box, ColorSchemeScript, MantineProvider, Stack } from "@mantine/core";
 import { theme } from "@/theme";
 import "./global.styles.scss";
 import ToggleThemeButton from "@/components/ToggleThemeButton/ToggleThemeButton";
@@ -18,6 +12,9 @@ const inter = Geologica({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: "Movies",
 	description: "Movie search and review",
+	category: "entertainment",
+	keywords: ["Next.js", "React", "TypeScript"],
+	creator: "Dennis Polukaroff",
 };
 
 export default function RootLayout({

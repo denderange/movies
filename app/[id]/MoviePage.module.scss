@@ -11,13 +11,17 @@
 }
 
 // Card section
-.card {
-	display: flex;
-	gap: 14px;
+.cardContainer {
 	border-radius: 12px;
 	background-color: #ffffff;
 	padding: 24px;
+}
+
+.card {
+	display: flex;
+	gap: 14px;
 	position: relative;
+	margin-bottom: 20px;
 
 	span {
 		color: var(--mantine-color-yellow-7);
@@ -36,16 +40,6 @@
 	color: var(--mantine-color-orange-9);
 	font-size: 20px;
 	font-weight: 700;
-
-	/* Обрезка текста */
-	line-height: 1.3rem;
-	max-height: 2.6rem;
-	-webkit-box-orient: vertical;
-	display: block;
-	display: -webkit-box;
-	overflow: hidden !important;
-	text-overflow: ellipsis;
-	-webkit-line-clamp: 4;
 }
 
 .movieDetails {
@@ -60,6 +54,15 @@
 
 	div {
 		font-weight: 500;
+	}
+}
+
+.linkMovieHomepage {
+	color: var(--mantine-color-orange-6);
+	transition: color 0.3s ease-in-out;
+
+	&:hover {
+		color: var(--mantine-color-orange-4);
 	}
 }
 
@@ -84,6 +87,11 @@
 .description {
 	border-bottom: 1px solid var(--mantine-color-brown-0);
 	padding-bottom: 16px;
+
+	p {
+		line-height: 1.5;
+		margin: 0px;
+	}
 }
 
 .productionDetails {
@@ -93,4 +101,9 @@
 	align-items: center;
 	font-weight: 500;
 	color: var(--mantine-color-brown-9);
+
+	span {
+		color: #000000;
+		font-weight: normal;
+	}
 }

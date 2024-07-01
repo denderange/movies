@@ -7,9 +7,6 @@ const nextConfig = {
 		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
 	},
 	images: {
-		domains: ["image.tmdb.org"],
-	},
-	images: {
 		remotePatterns: [
 			{
 				protocol: "https",

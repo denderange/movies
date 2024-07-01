@@ -1,13 +1,28 @@
-import { Stack } from "@mantine/core";
 import styles from "./MoviePage.module.scss";
 import CardMovieId from "./CardMovieId";
 import Image from "next/image";
+import { getMovieById } from "@/utils/fetchData";
+import { Metadata } from "next";
+import Link from "next/link";
 
-const MoviePage = ({ params }: { params: { id: string } }) => {
+export const generateMetadata = async ({
+	params,
+}: {
+	params: { id: string };
+}): Promise<Metadata> => {
+	return {
+		title: params.id,
+	};
+};
+
+const MoviePage = async ({ params }: { params: { id: string } }) => {
+	const movie = await getMovieById(params.id, "en-US");
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
-				<CardMovieId />
+				<CardMovieId movie={movie} />
+
 				<section className={styles.trailer}>
 					<div className={styles.video}>
 						<h6>Trailer</h6>
@@ -16,34 +31,27 @@ const MoviePage = ({ params }: { params: { id: string } }) => {
 
 					<div className={styles.description}>
 						<h6>Description</h6>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-						nam maxime natus. Minima doloribus quidem temporibus fugit. Neque,
-						vero eius, ducimus consectetur magnam quod fugiat ipsum dolorem quam
-						nemo accusantium!
+						<p>{movie.overview}</p>
 					</div>
 
 					<div>
 						<h6>Production</h6>
 						<div className={styles.productionDetails}>
-							<div>
-								<Image
-									src={""}
-									width={40}
-									height={40}
-									alt=''
-								/>
-							</div>
-							<p>Studio</p>
-
-							<div>
-								<Image
-									src={""}
-									width={40}
-									height={40}
-									alt=''
-								/>
-							</div>
-							<p>Studio</p>
+							{movie.production_companies.map((company: any) => (
+								<>
+									<div key={company.id}>
+										<img
+											src={`${process.env.TMDB_POSTER_URL}/w185/${company.logo_path}`}
+											style={{ width: "50px" }}
+											alt=''
+										/>
+									</div>
+									<p>
+										{company.name}
+										<span> ({company.origin_country})</span>
+									</p>
+								</>
+							))}
 						</div>
 					</div>
 				</section>
