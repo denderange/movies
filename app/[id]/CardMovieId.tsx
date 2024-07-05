@@ -4,8 +4,9 @@ import PopoverImage from "@/components/CardMovie/PopoverImage";
 import { FaStar } from "react-icons/fa";
 import ButtonUserRating from "@/components/ButtonUserRating/ButtonUserRating";
 import Link from "next/link";
+import { MovieT } from "@/types/movie";
 
-const CardMovieId = ({ movie }: any) => {
+const CardMovieId = ({ movie }: { movie: MovieT }) => {
 	const movieGenres = movie.genres
 		.reduce(
 			(acc: string[], genre: { name: string }) => [...acc, genre.name],
@@ -22,6 +23,7 @@ const CardMovieId = ({ movie }: any) => {
 						imgHeigth={352}
 						imgSrc={`${process.env.TMDB_POSTER_URL}/w300/${movie.poster_path}`}
 						textTooltip=''
+						href=''
 						showPopower={false}
 					/>
 				</Box>
@@ -34,7 +36,7 @@ const CardMovieId = ({ movie }: any) => {
 							{movie.title}
 						</Title>
 						<Text mb={8}>
-							<span>{movie.release_date}</span>
+							<span>{movie.release_date.slice(0, 4)}</span>
 						</Text>
 						<Group
 							mb={8}
@@ -44,7 +46,7 @@ const CardMovieId = ({ movie }: any) => {
 								size={28}
 								color='#fca13a'
 							/>{" "}
-							{movie.vote_average} <span>({movie.vote_count})</span>
+							{movie.vote_average.toFixed(1)} <span>({movie.vote_count})</span>
 						</Group>
 					</Box>
 
@@ -65,15 +67,18 @@ const CardMovieId = ({ movie }: any) => {
 				<ButtonUserRating />
 			</div>
 
-			<div>
-				Go to{" "}
-				<Link
-					href={movie.homepage}
-					target='_blank'
-					className={styles.linkMovieHomepage}>
-					movie homepage
-				</Link>
-			</div>
+			{movie.homepage && (
+				<div>
+					Go to{" "}
+					<Link
+						href={movie.homepage}
+						target='_blank'
+						className={styles.linkMovieHomepage}
+						title={movie.homepage}>
+						movie homepage
+					</Link>
+				</div>
+			)}
 		</section>
 	);
 };

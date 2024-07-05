@@ -20,6 +20,7 @@ const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
 					textTooltip={movie.overview}
 					imgSrc={`${process.env.TMDB_POSTER_URL}/w185/${movie.poster_path}`}
 					showPopower={true}
+					href={`/${movie.id}`}
 				/>
 			</Box>
 			<Stack className={styles.info}>
@@ -30,7 +31,8 @@ const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
 						className={styles.title}>
 						<Link
 							href={`/${movie.id}`}
-							className={styles.linkToMovie}>
+							className={styles.linkToMovie}
+							title={`go to movie details page`}>
 							{sliceText(movie.title, 38)}
 						</Link>
 					</Title>
@@ -45,7 +47,7 @@ const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
 							size={28}
 							color='#fca13a'
 						/>{" "}
-						{movie.vote_average} <span>({movie.vote_count})</span>
+						{movie.vote_average.toFixed(1)} <span>({movie.vote_count})</span>
 					</Group>
 				</Box>
 				<Text truncate='end'>

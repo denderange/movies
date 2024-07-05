@@ -6,11 +6,13 @@ export const handleGenresData = (
 ) => {
 	const genresNames = [];
 
-	for (let i of movieGenres) {
-		const genre = allGenres.find((genre) => genre.id === i);
+	if (allGenres) {
+		for (let i of movieGenres) {
+			const genre = allGenres.find((genre) => genre.id === i);
 
-		if (genre) {
-			genresNames.push(genre.name);
+			if (genre) {
+				genresNames.push(genre.name);
+			}
 		}
 	}
 

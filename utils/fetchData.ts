@@ -1,6 +1,7 @@
 const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_ACCESS_KEY = process.env.TMDB_ACCESS_KEY;
+import { MovieT } from "@/types/movie";
 
 const options = {
 	method: "GET",
@@ -38,7 +39,10 @@ export const getMovies = async (lang: string) => {
 	}
 };
 
-export const getMovieById = async (id: string, lang: string) => {
+export const getMovieById = async (
+	id: string,
+	lang: string
+): Promise<MovieT> => {
 	try {
 		const res = await fetch(
 			`${TMDB_BASE_URL}/movie/${id}?language=${lang}`,

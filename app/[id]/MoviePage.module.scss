@@ -95,8 +95,7 @@
 }
 
 .productionDetails {
-	display: grid;
-	grid-template-columns: max-content auto;
+	display: flex;
 	gap: 0px 20px;
 	align-items: center;
 	font-weight: 500;

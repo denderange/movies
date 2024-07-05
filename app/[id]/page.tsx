@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getMovieById } from "@/utils/fetchData";
 import { Metadata } from "next";
 import Link from "next/link";
+import { MovieT } from "@/types/movie";
 
 export const generateMetadata = async ({
 	params,
@@ -36,23 +37,23 @@ const MoviePage = async ({ params }: { params: { id: string } }) => {
 
 					<div>
 						<h6>Production</h6>
-						<div className={styles.productionDetails}>
-							{movie.production_companies.map((company: any) => (
-								<>
-									<div key={company.id}>
-										<img
-											src={`${process.env.TMDB_POSTER_URL}/w185/${company.logo_path}`}
-											style={{ width: "50px" }}
-											alt=''
-										/>
-									</div>
-									<p>
-										{company.name}
-										<span> ({company.origin_country})</span>
-									</p>
-								</>
-							))}
-						</div>
+						{movie.production_companies.map((company: any) => (
+							<div
+								className={styles.productionDetails}
+								key={company.id}>
+								<div style={{ width: "70px" }}>
+									<img
+										src={`${process.env.TMDB_POSTER_URL}/w185/${company.logo_path}`}
+										style={{ width: "70px" }}
+										alt={company.name}
+									/>
+								</div>
+								<p>
+									{company.name}
+									<span> ({company.origin_country})</span>
+								</p>
+							</div>
+						))}
 					</div>
 				</section>
 			</div>
