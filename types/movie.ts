@@ -7,6 +7,13 @@ type ProductionCompanieT = {
 	origin_country: string;
 };
 
+type TrailerT = {
+	type: string;
+	official: boolean;
+	id: string;
+	key: string; // на youtube видео находится по key --> https://www.youtube.com/watch?v=qQlr9-rF32A
+};
+
 export type MovieT = {
 	adult: boolean;
 	backdrop_path: string;
@@ -20,6 +27,7 @@ export type MovieT = {
 	release_date: string;
 	title: string;
 	video: boolean;
+	videos: { results: TrailerT[] };
 	vote_average: number;
 	vote_count: number;
 	production_companies: ProductionCompanieT[];

@@ -7,6 +7,7 @@ import PopoverImage from "./PopoverImage";
 import ButtonUserRating from "@/components/ButtonUserRating/ButtonUserRating";
 import type { MovieT } from "@/types/movie";
 import { handleGenresData } from "@/utils/handleGenresData";
+import { formatReleaseDate } from "@/utils/formatReleaseDate";
 
 const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
 	const genresNames = handleGenresData(genres, movie.genre_ids);
@@ -37,7 +38,7 @@ const CardMovie = ({ movie, genres }: { movie: MovieT; genres: any }) => {
 						</Link>
 					</Title>
 					<Text mb={8}>
-						<span>{movie.release_date}</span>
+						<span>{formatReleaseDate(movie.release_date)}</span>
 					</Text>
 					<Group
 						mb={8}

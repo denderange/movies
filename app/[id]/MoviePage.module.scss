@@ -60,6 +60,9 @@
 .linkMovieHomepage {
 	color: var(--mantine-color-orange-6);
 	transition: color 0.3s ease-in-out;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
 
 	&:hover {
 		color: var(--mantine-color-orange-4);
@@ -70,7 +73,8 @@
 .trailer {
 	border-radius: 12px;
 	background-color: #ffffff;
-	padding: 24px;
+	padding: 0 24px 24px 24px;
+	margin-top: 20px;
 
 	h6 {
 		font-size: 20px;
@@ -105,4 +109,8 @@
 		color: #000000;
 		font-weight: normal;
 	}
+}
+
+.blankInfoData {
+	color: #bdbdbd;
 }

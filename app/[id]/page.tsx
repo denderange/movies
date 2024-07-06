@@ -1,10 +1,7 @@
 import styles from "./MoviePage.module.scss";
 import CardMovieId from "./CardMovieId";
-import Image from "next/image";
 import { getMovieById } from "@/utils/fetchData";
 import { Metadata } from "next";
-import Link from "next/link";
-import { MovieT } from "@/types/movie";
 
 export const generateMetadata = async ({
 	params,
@@ -18,23 +15,39 @@ export const generateMetadata = async ({
 
 const MoviePage = async ({ params }: { params: { id: string } }) => {
 	const movie = await getMovieById(params.id, "en-US");
+	const blankCompanyLogo = "/images/no-image-available.jpg";
+
+	const trailerVideoKey =
+		movie.videos.results.find((item) => item.type === "Trailer")?.key ||
+		movie.videos.results[0].key;
 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				<CardMovieId movie={movie} />
 
+				{/* Trailer */}
 				<section className={styles.trailer}>
 					<div className={styles.video}>
 						<h6>Trailer</h6>
-						video
+						<div className={styles.videoContainer}>
+							<iframe
+								id='ytplayer'
+								width='480'
+								height='270'
+								src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+								frameBorder='0'
+								allowFullScreen></iframe>
+						</div>
 					</div>
 
+					{/* Description */}
 					<div className={styles.description}>
 						<h6>Description</h6>
 						<p>{movie.overview}</p>
 					</div>
 
+					{/* Production */}
 					<div>
 						<h6>Production</h6>
 						{movie.production_companies.map((company: any) => (
@@ -43,9 +56,13 @@ const MoviePage = async ({ params }: { params: { id: string } }) => {
 								key={company.id}>
 								<div style={{ width: "70px" }}>
 									<img
-										src={`${process.env.TMDB_POSTER_URL}/w185/${company.logo_path}`}
+										src={
+											company.logo_path === null
+												? blankCompanyLogo
+												: `${process.env.TMDB_POSTER_URL}/w185/${company.logo_path}`
+										}
 										style={{ width: "70px" }}
-										alt={company.name}
+										alt=''
 									/>
 								</div>
 								<p>

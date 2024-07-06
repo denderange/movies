@@ -45,7 +45,8 @@ export const getMovieById = async (
 ): Promise<MovieT> => {
 	try {
 		const res = await fetch(
-			`${TMDB_BASE_URL}/movie/${id}?language=${lang}`,
+			// `${TMDB_BASE_URL}/movie/${id}?language=${lang}`,
+			`${TMDB_BASE_URL}/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=videos`,
 			options
 		);
 

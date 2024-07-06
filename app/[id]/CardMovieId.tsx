@@ -5,6 +5,8 @@ import { FaStar } from "react-icons/fa";
 import ButtonUserRating from "@/components/ButtonUserRating/ButtonUserRating";
 import Link from "next/link";
 import { MovieT } from "@/types/movie";
+import { formatReleaseDate } from "@/utils/formatReleaseDate";
+import { PiArrowFatLinesRightBold } from "react-icons/pi";
 
 const CardMovieId = ({ movie }: { movie: MovieT }) => {
 	const movieGenres = movie.genres
@@ -13,6 +15,19 @@ const CardMovieId = ({ movie }: { movie: MovieT }) => {
 			[]
 		)
 		.join(", ");
+
+	const getTimeFromMins = (mins: number) => {
+		let hours = Math.trunc(mins / 60);
+		let minutes = mins % 60;
+
+		return hours >= 1 ? `${hours}h ${minutes}m` : `${minutes}m`;
+	};
+
+	function formatMoney(amount: number) {
+		const numberFormatter = new Intl.NumberFormat("en-US");
+
+		return numberFormatter.format(amount);
+	}
 
 	return (
 		<section className={styles.cardContainer}>
@@ -52,13 +67,19 @@ const CardMovieId = ({ movie }: { movie: MovieT }) => {
 
 					<div className={styles.movieDetails}>
 						<span>Duration</span>
-						<div>{movie.runtime}</div>
+						<div>{getTimeFromMins(movie.runtime)}</div>
 						<span>Premiere</span>
-						<div>{movie.release_date}</div>
+						<div>{formatReleaseDate(movie.release_date)}</div>
 						<span>Budget</span>
-						<div>$ {movie.budget}</div>
+						<div>$ {formatMoney(movie.budget)}</div>
 						<span>Gross worldwide</span>
-						<div>$ {movie.revenue}</div>
+						<div>
+							{movie.revenue === 0 ? (
+								<i className={styles.blankInfoData}>unknown</i>
+							) : (
+								`$ ${formatMoney(movie.revenue)}`
+							)}
+						</div>
 						<span>Genres</span>
 						<div>{movieGenres}</div>
 					</div>
@@ -75,7 +96,10 @@ const CardMovieId = ({ movie }: { movie: MovieT }) => {
 						target='_blank'
 						className={styles.linkMovieHomepage}
 						title={movie.homepage}>
-						movie homepage
+						movie homepage{" "}
+						<PiArrowFatLinesRightBold
+							style={{ position: "relative", top: "2px" }}
+						/>
 					</Link>
 				</div>
 			)}
